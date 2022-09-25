@@ -1,0 +1,41 @@
+Editing D2Game.dll with this fix will affect to-hit chance
+
+Base Address 0x6fc30000
+
+0x6fcc2220      cmp     eax, 5     ; 5
+0x6fcc2223      jg      0x6fcc222e
+0x6fcc2225      mov     eax, 5
+0x6fcc222a      mov     ebx, eax
+0x6fcc222c      jmp     0x6fcc223c
+0x6fcc222e      cmp eax, 0x5f      ; 95
+0x6fcc2231      jge 0x6fcc2237
+0x6fcc2233      mov ebx, eax
+0x6fcc2235      jmp 0x6fcc223c
+0x6fcc2237      mov ebx, 0x5f      ; 95
+0x6fcc223c      mov eax, dword [esi + 0x20]
+
+[How to apply Fix]
+
+1 - At file offset 0x0009222e or search for hex string 83fb5f
+
+Replace
+
+Asm1: cmp eax, 0x5f
+Hex1: 83f85f
+
+With
+
+Asm1: cmp eax, 0x64
+Hex1: 83f864
+
+2 - At file ofset 0x00092237 or search for hex string bb5f000000 8b4620
+
+Replace
+
+Asm2: mov ebx, 0x5f
+Hex2: bb5f000000
+
+With
+
+Asm2: mov ebx, 0x64
+Hex2: bb64000000

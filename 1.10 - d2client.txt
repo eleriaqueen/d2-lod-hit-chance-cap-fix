@@ -1,0 +1,37 @@
+Editing D2Client.dll with this fix will affect character sheet display of to-hit chance
+
+Base Address 0x6faa0000
+
+0x6fad0567      cmp     ebx, 5     ; 5
+0x6fad056a      jge     0x6fad0573
+0x6fad056c      mov     ebx, 5
+0x6fad0571      jmp     0x6fad057d
+0x6fad0573      cmp     ebx, 0x5f  ; 95
+0x6fad0576      jle     0x6fad057d
+0x6fad0578      mov     ebx, 0x5f  ; 95
+
+[How to apply Fix]
+
+1 - Go to file offset 0x00030573 or search for hex string 83fb5f
+
+Replace
+
+Asm1: cmp ebx, 0x5f
+Hex1: 83fb5f
+
+With
+
+Asm1: cmp ebx, 0x64
+Hex1: 83f864
+
+2 - Go to file offset 0x00030578 or search for hex string bb5f000000
+
+Replace
+
+Asm2: mov ebx, 0x5f
+Hex2: bb5f000000
+
+With
+
+Asm2: mov ebx, 0x64
+Hex2: bb64000000

@@ -7,7 +7,7 @@ This repository contains enough info to be able to manually patch your game with
 ## Explanation
 The unmodified game caps player characters' hit chance at 95 %.
 
-I personally hate that my characters have at minimum a 5 % miss chance !
+I personally hate that non-magic attacks have at minimum a 5 % miss chance while magic attacks always hit.
 
 Some people might want an even greater miss chance in their mod, to each their own.
 

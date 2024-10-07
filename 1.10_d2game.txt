@@ -1,4 +1,5 @@
-Editing D2Game.dll with this fix will affect to-hit chance
+Editing D2Game.dll with this fix will change the maximum
+hit-chance a character can actually attain
 
 Base Address 0x6fc30000
 

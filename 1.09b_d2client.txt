@@ -1,4 +1,5 @@
-Editing D2Client.dll with this fix will affect character sheet display of to-hit chance
+Editing D2Client.dll with this fix will change the maximum
+hit-chance that can be displayed on the Character Sheet
 
 Base Address 0x6faa0000
 

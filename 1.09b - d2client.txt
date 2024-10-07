@@ -1,0 +1,36 @@
+Editing D2Client.dll with this fix will affect character sheet display of to-hit chance
+
+Base Address 0x6faa0000
+
+                             To_Hit_Cap_On_Stat_Sheet        XREF[1]:     6faca99d(j)
+6faca9ac 83 f8 5f        CMP        EAX,0x5f                 To-Hit Chance is less than 95 ?
+6faca9af 7e 05           JLE        LAB_6faca9b6             Jump away
+6faca9b1 b8 5f 00        MOV        EAX,0x5f                 Else Cap it at 95
+         00 00
+
+
+[How to apply Fix]
+
+1 - Go to file offset 0x2A9AC
+
+Replace
+
+Asm1: cmp eax, 0x5f
+Hex1: 83f85f
+
+With
+
+Asm1: cmp ebx, 0x64
+Hex1: 83f864
+
+2 - Go to file offset 0x2A9B1
+
+Replace
+
+Asm2: cmp eax, 0x5f
+Hex2: b85f000000
+
+With
+
+Asm2: mov ebx, 0x64
+Hex2: b864000000

@@ -1,0 +1,35 @@
+Editing D2Game.dll with this fix will affect to-hit chance
+
+Base Address 0x6fc30000
+
+6FCB01DC | 83FF 5F     | cmp edi,5F
+6FCB01DF | 7E 05       | jle d2game.6FCB01E6
+6FCB01E1 | BF 5F000000 | mov edi,5F
+
+[How to apply Fix]
+
+1 - At file offset 0x801DC
+
+Replace
+
+Asm1: cmp edi,0x5F
+Hex1: 83FF05
+
+With
+
+Asm1: cmp edi,0x64
+Hex1: 83FF64
+
+2 - At file ofset 0x801E1
+
+Replace
+
+Asm2: mov edi, 0x5f
+Hex2: bf5f00
+
+With
+
+Asm2: mov edi, 0x64
+Hex2: BF05000000
+
+
